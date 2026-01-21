@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Horizon | Premium Event Management</title>
+    <link rel="stylesheet" href="./styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-layer-group"></i> EventHorizon
+        </div>
+        <nav>
+            <button id="btn-show-events" class="nav-link active">Explore Events</button>
+            <button id="btn-create-event-view" class="nav-btn primary">Create Event</button>
+        </nav>
+    </header>
+
+    <!-- Main Container -->
+    <main class="container">
+
+        <!-- SECTION: Event List -->
+        <section id="event-list-section">
+            <div class="section-header">
+                <h1>Discover Events</h1>
+                <div class="controls">
+                    <div class="select-wrapper">
+                        <select id="filter-category">
+                            <option value="">All Categories</option>
+                            <option value="conference">Conference</option>
+                            <option value="sport">Sport</option>
+                            <option value="workshop">Workshop</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div id="events-grid" class="events-grid">
+                <!-- Event Cards injected here by TS -->
+            </div>
+            <div id="no-events-msg" class="empty-state hidden">
+                <i class="fa-regular fa-calendar-xmark"></i>
+                <p>No events found. Be the first to create one!</p>
+            </div>
+        </section>
+
+        <!-- SECTION: Create Event Form -->
+        <section id="create-event-section" class="hidden">
+            <div class="form-container glass-card">
+                <h2><i class="fa-solid fa-plus-circle"></i> Create New Event</h2>
+                <form id="create-event-form">
+                    <div class="form-group">
+                        <label>Event Title</label>
+                        <input type="text" id="event-title" placeholder="e.g. Future Tech Summit 2025" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Category</label>
+                            <div class="select-wrapper">
+                                <select id="event-category" required>
+                                    <option value="conference">Conference</option>
+                                    <option value="sport">Sport</option>
+                                    <option value="workshop">Workshop</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Date</label>
+                            <input type="date" id="event-date" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                         <div class="form-group">
+                            <label>Location</label>
+                            <input type="text" id="event-location" placeholder="e.g. Paris, France" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Max Capacity</label>
+                            <input type="number" id="event-capacity" min="1" value="50" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="event-description" rows="4" placeholder="Describe the event..." required></textarea>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" id="btn-cancel-create" class="btn secondary">Cancel</button>
+                        <button type="submit" class="btn primary">Publish Event</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- MODAL: Event Details & Registration -->
+    <div id="event-modal" class="modal-overlay hidden">
+        <div class="modal-content glass-card">
+            <button id="close-modal" class="close-btn"><i class="fa-solid fa-xmark"></i></button>
+            
+            <div class="modal-header">
+                <span id="detail-category" class="badge">Category</span>
+                <h2 id="detail-title">Event Title</h2>
+                <div class="meta-info">
+                    <span><i class="fa-regular fa-calendar"></i> <span id="detail-date">Date</span></span>
+                    <span><i class="fa-solid fa-location-dot"></i> <span id="detail-location">Location</span></span>
+                    <span><i class="fa-solid fa-users"></i> <span id="detail-capacity">0/0</span> Spots</span>
+                </div>
+            </div>
+
+            <div class="modal-body">
+                <p id="detail-description">Description goes here...</p>
+
+                <hr class="divider">
+
+                <h3>Register for this Event</h3>
+                <form id="registration-form">
+                    <input type="hidden" id="detail-id">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="reg-fullname" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" id="reg-email" placeholder="john@example.com" required>
+                    </div>
+                    <button type="submit" class="btn primary full-width">Confirm Registration</button>
+                    <p id="reg-status-msg" class="status-msg"></p>
+                </form>
+
+                <div class="registrants-list">
+                    <h4>Registered Users</h4>
+                    <ul id="registrants-display">
+                        <!-- List users here -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN SCRIPT -->
+    <!-- Type module allows using imports in main.ts -->
+    <script type="module" src="./dist/main.js"></script>
+</body>
+</html>

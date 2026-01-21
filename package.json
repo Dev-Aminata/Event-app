@@ -1,0 +1,21 @@
+{
+  "name": "event-app",
+  "version": "1.0.0",
+  "description": "Mini Web Application for Event Management",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc -w",
+    "start": "lite-server"
+  },
+  "keywords": [
+    "typescript",
+    "event-management",
+    "school-project"
+  ],
+  "author": "Daniel KINKEU",
+  "license": "ISC",
+  "devDependencies": {
+    "lite-server": "^2.6.1",
+    "typescript": "^5.3.3"
+  }
+}

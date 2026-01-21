@@ -66,6 +66,5 @@ This project demonstrates the effective use of TypeScript's strict typing and OO
 ## 8. Author Information
 | Field | Value |
 | :--- | :--- |
-| Full Name | [Your Name Here] |
-| Student ID | [Your ID Here] |
-| Email | [Your Email Here] |
+| Full Name | Oceanne Aminata |
+| Email | aminata.oceane@saintjeaningenieur.org |
